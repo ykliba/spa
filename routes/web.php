@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(["middleware"=>"auth"],function(){
+    Route::get('/todo',[App\Http\Controllers\TodoController::class, "index"]);
+});
+
+Route::get('/todo',[App\Http\Controllers\TodoController::class, "index"]);
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
