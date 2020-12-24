@@ -14,14 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('todo');
 });
 
 Route::group(["middleware"=>"auth"],function(){
-    Route::get('/todo',[App\Http\Controllers\TodoController::class, "index"]);
+    return view('todo');
 });
 
-Route::get('/todo',[App\Http\Controllers\TodoController::class, "index"]);
+Route::get('/todo',[App\Http\Controllers\TodoController::class, "index"])->name('index');
+
 
 Auth::routes();
 
